@@ -1,0 +1,3761 @@
+
+/* =========================================================
+   RESET
+========================================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+html {
+    scroll-behavior: smooth;
+}
+
+
+body {
+
+    margin: 0;
+
+    background: var(--bg-main);
+
+    color: var(--text-main);
+
+    font-family: 'Montserrat', sans-serif;
+
+    overflow-x: hidden;
+
+}
+
+/* =========================================================
+   DESIGN SYSTEM — DARK CINEMATIC
+========================================================= */
+
+:root {
+
+    /* BACKGROUND */
+
+    --bg-main: #101010;
+    --bg-secondary: #181615;
+    --bg-card: #211E1B;
+
+
+    /* GOLD */
+
+    --accent: #B69A78;
+    --accent-dark: #725B43;
+    --accent-light: #D6C1A5;
+
+
+    /* TEXT */
+
+    --text-main: #F2EADF;
+    --text-secondary: #C0B5A8;
+    --text-muted: #8D8379;
+
+
+    /* BORDER */
+
+    --border-soft: rgba(214, 193, 165, 0.20);
+
+
+    /* EFFECT */
+
+    --shadow-dark:
+        0 20px 60px rgba(0, 0, 0, 0.45);
+
+    --transition-smooth:
+        all 0.4s ease;
+    
+    /* BURGUNDY */
+
+--burgundy-deep: #431926;
+--burgundy-soft: #89505D;
+--burgundy-light: #B9878E;
+--burgundy-border: rgba(137, 80, 93, 0.55);
+
+}
+
+
+/* =========================================================
+   BACKGROUND UTAMA
+========================================================= */
+
+.site-background {
+
+    position: fixed;
+
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    z-index: -10;
+
+    overflow: hidden;
+
+}
+
+
+.background-image {
+
+    position: absolute;
+
+    inset: -20px;
+
+    background-image:
+        url("assets/foto-03.jpg");
+
+    background-size: cover;
+
+    background-position: center;
+
+    background-repeat: no-repeat;
+
+    transform: scale(1.04);
+
+}
+
+
+.background-overlay {
+
+    position: absolute;
+
+    inset: 0;
+
+    background:
+
+        linear-gradient(
+            to bottom,
+            rgba(16, 16, 16, 0.65),
+            rgba(16, 16, 16, 0.88)
+        );
+
+}
+
+
+/* =========================================================
+   TYPOGRAPHY — DARK CINEMATIC
+========================================================= */
+
+h1,
+h2,
+h3 {
+
+    font-family: 'Cormorant Garamond', serif;
+
+    font-weight: 500;
+
+    color: var(--text-main);
+
+}
+
+
+h1 {
+
+    font-size: clamp(3rem, 9vw, 6rem);
+
+    line-height: 0.95;
+
+}
+
+
+h2 {
+
+    font-size: clamp(2.3rem, 7vw, 4.5rem);
+
+    line-height: 1.05;
+
+}
+
+
+h1 span,
+h2 span {
+
+    color: var(--accent);
+
+    font-style: italic;
+
+}
+
+
+p {
+
+    font-family: 'Montserrat', sans-serif;
+
+    line-height: 1.8;
+
+    color: var(--text-secondary);
+
+}
+
+
+h1 {
+
+    font-size: clamp(
+        3rem,
+        9vw,
+        6rem
+    );
+
+    line-height: 0.9;
+
+}
+
+
+h2 {
+
+    font-size: clamp(
+        2.3rem,
+        7vw,
+        4.5rem
+    );
+
+    line-height: 1;
+
+}
+
+
+h1 span,
+h2 span {
+
+    display: block;
+
+    font-style: italic;
+
+}
+
+
+p {
+
+    line-height: 1.8;
+
+}
+
+
+/* =========================================================
+   SCROLL CONTAINER
+========================================================= */
+
+.invitation {
+
+    width: 100%;
+    height: 100svh;
+    overflow-y: auto;
+    overflow-x: hidden;
+
+    scroll-snap-type: y mandatory;
+    scroll-behavior: smooth;
+}
+
+
+/* =========================================================
+   SETIAP SLIDE
+========================================================= */
+
+.slide {
+
+    position: relative;
+
+    width: 100%;
+
+    min-height: 100svh;
+
+    padding: 40px 25px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    text-align: center;
+
+    scroll-snap-align: start;
+
+    scroll-snap-stop: always;
+
+}
+
+/* =========================================================
+   BACKGROUND TAMBAHAN PER SLIDE
+   Background inti tetap diam; foto ini hanya tampil pada slide 2.
+   Untuk slide lain, tambahkan class dan aturan background serupa.
+========================================================= */
+
+.slide-pembukaan {
+    /* Biarkan dasar slide transparan agar background inti tetap menjadi lapisan dasar. */
+    background: transparent;
+    isolation: isolate;
+}
+
+.slide-pembukaan::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+
+    background-image:
+        linear-gradient(
+            to bottom,
+            rgba(0, 0, 0, 0.22),
+            rgba(0, 0, 0, 0.48)
+        ),
+        url("assets/foto-pembukaan.jpg");
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+
+
+
+/* =========================================================
+   COVER — SLIDE 1
+========================================================= */
+
+.cover-slide {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 55px 25px 100px;
+}
+
+/* FOTO BACKGROUND */
+
+.cover-slide::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -2;
+
+    background-image: url("assets/foto-slide1.jpg");
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+
+    transform: scale(1.02);
+}
+
+/* OVERLAY GELAP */
+
+.cover-slide::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+
+    background: linear-gradient(
+        to bottom,
+        rgba(16, 16, 16, 0.65) 0%,
+        rgba(16, 16, 16, 0.20) 35%,
+        rgba(16, 16, 16, 0.25) 60%,
+        rgba(16, 16, 16, 0.75) 100%
+    );
+
+    pointer-events: none;
+}
+
+/* KONTEN */
+
+.cover-top,
+.cover-content {
+    position: relative;
+    z-index: 1;
+}
+
+/* =========================================================
+   BAGIAN ATAS
+========================================================= */
+
+.cover-top {
+    width: 100%;
+    max-width: 500px;
+
+    text-align: center;
+}
+
+/* ASSALAMUALAIKUM */
+
+.cover-top .eyebrow {
+    margin: 0;
+
+    font-size: 10px;
+    letter-spacing: 5px;
+
+    color: var(--text-main);
+    opacity: 0.85;
+}
+
+/* GARIS PEMISAH */
+
+.cover-divider {
+    width: 45px;
+    height: 1px;
+
+    margin: 18px auto;
+
+    background: var(--accent);
+    opacity: 0.85;
+}
+
+/* KALIMAT UNDANGAN */
+
+.cover-top .description {
+    max-width: 320px;
+
+    margin: 0 auto;
+
+    font-size: 12px;
+    line-height: 1.8;
+    letter-spacing: 1.5px;
+
+    color: rgba(255,255,255,0.85);
+}
+
+/* =========================================================
+   BAGIAN BAWAH
+========================================================= */
+
+.cover-content {
+    width: 100%;
+    max-width: 900px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    text-align: center;
+}
+
+/* NAMA MEMPELAI */
+
+.cover-content h1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    gap: 12px;
+
+    margin: 0 0 8px;
+
+    font-family: 'Bonheur Royale', cursive;
+    font-size: clamp(65px, 12vw, 110px);
+    font-weight: 400;
+    line-height: 1.2;
+
+    white-space: nowrap;
+    color: var(--text-main);
+}
+
+/* HURUF S DAN I */
+
+.cover-content h1 .nama {
+    font-family: 'Bonheur Royale', cursive;
+    font-size: 1em;
+    font-style: normal;
+
+    color: var(--text-main);
+}
+
+/* SIMBOL & */
+
+.cover-content h1 .simbol {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 0.6em;
+    font-style: italic;
+
+    color: var(--accent);
+}
+
+/* TANGGAL */
+
+.cover-content .date {
+    margin: 0;
+
+    font-size: 12px;
+    letter-spacing: 5px;
+
+    color: var(--text-main);
+}
+
+
+
+/* =========================================================
+   SLIDE 2 — QUOTE SURAH AR-RUM
+========================================================= */
+
+.quote-slide {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 60px 25px;
+
+    background: linear-gradient(
+        135deg,
+        rgba(67, 25, 38, 0.78),
+        rgba(35, 15, 23, 0.88)
+    );
+}
+
+.quote-box {
+    width: 100%;
+    max-width: 750px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+/* Label atas */
+.quote-eyebrow {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 9px;
+    letter-spacing: 4px;
+    color: var(--accent-light);
+    margin-bottom: 28px;
+}
+
+/* Garis dekoratif */
+.quote-divider {
+    width: 45px;
+    height: 1px;
+    background: var(--accent);
+    opacity: 0.7;
+    margin: 20px 0;
+}
+
+/* Tulisan Arab */
+.quote-arabic {
+    font-family: serif;
+    font-size: clamp(25px, 4vw, 36px);
+    line-height: 2;
+    color: var(--text-main);
+    margin: 10px 0 25px;
+}
+
+/* Terjemahan */
+.quote {
+    max-width: 580px;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(14px, 2vw, 17px);
+    line-height: 1.9;
+    color: var(--text-secondary);
+    font-style: italic;
+    margin: 0;
+}
+
+/* Referensi ayat */
+.quote-source {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 10px;
+    letter-spacing: 3px;
+    color: var(--accent-light);
+    margin-top: 5px;
+}
+
+/* =========================================================
+   TRANSPARENT SLIDE
+========================================================= */
+
+.transparent-slide {
+
+    background: rgba(0,0,0,0.05);
+
+}
+
+
+/* =========================================================
+   DARK SLIDE
+========================================================= */
+
+.dark-slide {
+
+    background:
+        rgba(0,0,0,0.28);
+
+}
+
+
+.quote-box {
+
+    max-width: 650px;
+
+    padding: 50px 30px;
+
+    background:
+        rgba(0,0,0,0.32);
+
+    border-top:
+        1px solid rgba(255,255,255,0.15);
+
+    border-bottom:
+        1px solid rgba(255,255,255,0.15);
+
+}
+
+
+.quote {
+
+    font-family:
+        'Cormorant Garamond',
+        serif;
+
+    font-size: clamp(
+        1.7rem,
+        5vw,
+        3rem
+    );
+
+    font-style: italic;
+
+    line-height: 1.3;
+
+}
+
+
+.quote-source {
+
+    margin-top: 25px;
+
+    font-size: 10px;
+
+    letter-spacing: 3px;
+
+    opacity: 0.6;
+
+}
+
+
+
+/* =========================================================
+   COUPLE — EDITORIAL WEDDING
+========================================================= */
+
+.couple-slide {
+
+    position: relative;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 50px 7%;
+
+    background:transparent;
+
+}
+
+
+/* MAIN LAYOUT */
+
+.couple-content {
+
+    width: min(100%, 850px);
+
+    display: grid;
+
+    grid-template-columns:
+        0.9fr 1fr;
+
+    grid-template-areas:
+        "portrait details";
+
+    align-items: center;
+
+    gap: 55px;
+
+}
+
+
+/* ALTERNATING LAYOUT — GROOM */
+
+.couple-groom .couple-content {
+
+    grid-template-areas:
+        "details portrait";
+
+}
+
+
+
+/* =========================================================
+   PORTRAIT — BURGUNDY EDITORIAL FRAME
+========================================================= */
+
+.portrait {
+    grid-area: portrait;
+
+    width: 100%;
+    height: 430px;
+
+    margin: 0;
+
+    background-size: cover;
+    background-position: center;
+
+    border-radius: 4px;
+
+    border: none;
+
+    box-shadow:
+        0 20px 50px rgba(0,0,0,0.25);
+}
+
+
+/* IMAGE */
+
+.portrait-wanita {
+
+    background-image:
+        url("assets/wanita.jpg");
+
+}
+
+
+.portrait-pria {
+
+    background-image:
+        url("assets/pria.jpg");
+
+}
+
+
+/* DETAILS */
+
+.couple-details {
+
+    grid-area: details;
+
+    text-align: left;
+
+    padding: 10px 0;
+
+}
+
+
+/* EYEBROW */
+
+.couple-details .eyebrow {
+
+    font-size: 10px;
+
+    letter-spacing: 5px;
+
+    text-transform: uppercase;
+
+    opacity: 0.75;
+
+    margin-bottom: 25px;
+
+}
+
+
+/* NAME */
+
+.couple-details h2 {
+
+    font-size: clamp(30px, 4vw, 48px);
+
+    line-height: 1.15;
+
+    letter-spacing: 2px;
+
+    font-weight: 400;
+
+    margin-bottom: 22px;
+
+}
+
+
+/* DIVIDER */
+
+.couple-divider {
+
+    width: 55px;
+
+    height: 1px;
+
+    background: currentColor;
+
+    opacity: 0.5;
+
+    margin-bottom: 22px;
+
+}
+
+
+/* PARENTS */
+
+.couple-details .parent-label {
+
+    font-size: 12px;
+
+    opacity: 0.65;
+
+    margin-bottom: 10px;
+
+}
+
+
+.couple-details strong {
+
+    display: block;
+
+    font-size: 13px;
+
+    font-weight: 400;
+
+    line-height: 2;
+
+    letter-spacing: 0.5px;
+
+}
+
+
+/* MOBILE RESPONSIVE */
+
+
+/* =========================================================
+   MOBILE — EDITORIAL LAYOUT
+========================================================= */
+
+@media (max-width: 600px) {
+
+    .couple-slide {
+
+        padding: 25px 18px;
+
+    }
+
+    .couple-content,
+    .couple-groom .couple-content {
+
+        width: 100%;
+
+        max-width: 480px;
+
+        grid-template-columns:
+            1fr 1fr;
+
+        grid-template-areas:
+            "portrait details";
+
+        gap: 15px;
+
+    }
+
+    .couple-groom .couple-content {
+
+        grid-template-areas:
+            "details portrait";
+
+    }
+
+    .portrait {
+
+        width: 100%;
+
+        height: auto;
+
+        aspect-ratio: 3 / 4;
+
+    }
+
+    .couple-details {
+
+        text-align: left;
+
+        padding: 0;
+
+        min-width: 0;
+
+    }
+
+    .couple-details .eyebrow {
+
+        font-size: 8px;
+
+        letter-spacing: 2px;
+
+        margin-bottom: 12px;
+
+    }
+
+    .couple-details h2 {
+
+        font-size: clamp(17px, 5vw, 25px);
+
+        line-height: 1.2;
+
+        letter-spacing: 0.5px;
+
+        overflow-wrap: anywhere;
+
+        margin-bottom: 14px;
+
+    }
+
+    .couple-divider {
+
+        width: 35px;
+
+        margin-bottom: 14px;
+
+    }
+
+    .couple-details .parent-label {
+
+        font-size: 10px;
+
+        margin-bottom: 6px;
+
+    }
+
+    .couple-details strong {
+
+        font-size: 10px;
+
+        line-height: 1.7;
+
+        letter-spacing: 0;
+
+    }
+
+}
+
+
+/* =========================================================
+   EVENT — CINEMATIC EDITORIAL
+========================================================= */
+
+.event-slide {
+
+    position: relative;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: flex-start;
+
+    padding: 70px 10%;
+
+    overflow: hidden;
+
+    background: transparent;
+
+}
+
+
+/* BACKGROUND FOTO */
+
+.event-slide::before {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    background-image:
+        url("assets/foto-02.jpg");
+
+    background-size: cover;
+
+    background-position: center;
+
+    z-index: 0;
+
+    transform: scale(1.02);
+
+}
+
+
+/* OVERLAY FOTO */
+
+.event-slide::after {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(10,10,10,0.82) 0%,
+            rgba(10,10,10,0.55) 45%,
+            rgba(10,10,10,0.12) 100%
+        );
+
+    z-index: 1;
+
+}
+
+
+/* KONTEN ACARA */
+
+.event-card {
+
+    position: relative;
+
+    z-index: 2;
+
+    width: min(100%, 520px);
+
+    padding: 0;
+
+    background: transparent;
+
+    border: none;
+
+    backdrop-filter: none;
+
+    text-align: left;
+
+}
+
+
+/* JUDUL */
+
+.event-heading {
+
+    margin-bottom: 55px;
+
+}
+
+.event-heading .eyebrow {
+
+    font-size: 10px;
+
+    letter-spacing: 5px;
+
+    margin-bottom: 18px;
+
+    opacity: 0.75;
+
+}
+
+.event-heading h2 {
+
+    font-size: clamp(35px, 5vw, 58px);
+
+    font-weight: 400;
+
+    letter-spacing: 1px;
+
+    line-height: 1.15;
+
+    margin: 0;
+
+}
+
+
+/* INFORMASI ACARA */
+
+.event-details {
+
+    width: 100%;
+
+}
+
+.event-item h3 {
+
+    font-family:
+        'Montserrat',
+        sans-serif;
+
+    font-size: 10px;
+
+    letter-spacing: 3px;
+
+    font-weight: 500;
+
+    margin-bottom: 14px;
+
+}
+
+.event-item p {
+
+    font-size: 12px;
+
+    line-height: 1.8;
+
+    letter-spacing: 0.5px;
+
+    opacity: 0.8;
+
+    margin: 0;
+
+}
+
+
+/* GARIS PEMISAH */
+
+.event-divider {
+
+    width: 45px;
+
+    height: 1px;
+
+    background: rgba(255,255,255,0.5);
+
+    margin: 25px 0;
+
+}
+
+
+/* =========================================================
+   BUTTON — LIHAT LOKASI
+========================================================= */
+
+.maps-button {
+
+    display: inline-flex;
+    align-items: center;
+    gap: 18px;
+
+    margin-top: 42px;
+    padding: 13px 0;
+
+    /* RESET BUTTON DEFAULT */
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.65);
+    border-radius: 0;
+
+    color: white;
+    font-family: inherit;
+    font-size: 9px;
+    font-weight: normal;
+    letter-spacing: 2.5px;
+
+    cursor: pointer;
+    appearance: none;
+    -webkit-appearance: none;
+
+    transition: 0.3s ease;
+}
+
+
+/* ICON PANAH */
+
+.maps-button span {
+
+    font-size: 14px;
+
+    transition: transform 0.3s ease;
+
+}
+
+
+/* HOVER */
+
+.maps-button:hover {
+
+    opacity: 0.65;
+
+}
+
+
+.maps-button:hover span {
+
+    transform: translate(3px, -3px);
+
+}
+
+
+/* RESPONSIVE */
+
+@media (max-width: 600px) {
+
+    .maps-button {
+
+        margin-top: 32px;
+
+    }
+
+}
+
+
+/* =========================================================
+   COUNTDOWN — MINIMALIST CINEMATIC
+========================================================= */
+
+.countdown-slide {
+
+    position: relative;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 60px 25px;
+
+    background: transparent;
+
+    text-align: center;
+
+}
+
+
+/* KONTEN UTAMA */
+
+.countdown-content {
+
+    position: relative;
+
+    z-index: 2;
+
+    width: min(100%, 850px);
+
+}
+
+
+/* EYEBROW */
+
+.countdown-content .eyebrow {
+
+    font-size: 10px;
+
+    letter-spacing: 5px;
+
+    margin-bottom: 22px;
+
+    opacity: 0.7;
+
+}
+
+
+/* JUDUL */
+
+.countdown-content h2 {
+
+    font-size: clamp(30px, 5vw, 48px);
+
+    font-weight: 400;
+
+    letter-spacing: 1px;
+
+    line-height: 1.2;
+
+    margin-bottom: 30px;
+
+}
+
+
+/* GARIS PEMISAH */
+
+.countdown-divider {
+
+    width: 55px;
+
+    height: 1px;
+
+    background: #B69A78;
+
+    margin: 0 auto 0px;
+
+}
+
+
+/* COUNTDOWN */
+
+.countdown {
+
+    display: grid;
+
+    grid-template-columns: repeat(4, 1fr);
+
+    gap: 20px;
+
+    width: 100%;
+
+    max-width: 700px;
+
+    margin: 0 auto;
+
+}
+
+
+/* SETIAP ANGKA */
+
+.countdown-item {
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    gap: 13px;
+
+}
+
+
+/* ANGKA */
+
+.countdown-item strong {
+
+    font-family: 'Montserrat', sans-serif;
+
+    font-size: clamp(38px, 6vw, 68px);
+
+    font-weight: 300;
+
+    line-height: 1;
+
+    letter-spacing: 2px;
+
+    color: #F2EADF;
+
+    font-variant-numeric: tabular-nums;
+
+}
+
+
+/* LABEL */
+
+.countdown-item span {
+
+    font-size: 9px;
+
+    letter-spacing: 3px;
+
+    color: #B69A78;
+
+    opacity: 0.9;
+
+}
+
+
+/* KALIMAT PENUTUP */
+
+.countdown-note {
+
+    margin-top: 55px;
+
+    font-size: 10px;
+
+    letter-spacing: 1px;
+
+    font-style: italic;
+
+    color: #C0B5A8;
+
+    opacity: 0.7;
+
+}
+
+
+/* =========================================================
+   RESPONSIVE MOBILE
+========================================================= */
+
+@media (max-width: 600px) {
+
+    .countdown-slide {
+
+        padding: 40px 20px;
+
+    }
+
+    .countdown-content .eyebrow {
+
+        font-size: 8px;
+
+        letter-spacing: 3px;
+
+        margin-bottom: 18px;
+
+    }
+
+    .countdown-content h2 {
+
+        font-size: 29px;
+
+        margin-bottom: 25px;
+
+    }
+
+    .countdown-divider {
+
+        margin-bottom: 0px;
+
+    }
+
+    .countdown {
+
+        gap: 8px;
+
+    }
+
+    .countdown-item {
+
+        gap: 10px;
+
+    }
+
+    .countdown-item strong {
+
+        font-size: clamp(27px, 8vw, 42px);
+
+        letter-spacing: 0;
+
+    }
+
+    .countdown-item span {
+
+        font-size: 8px;
+
+        letter-spacing: 1px;
+
+    }
+
+    .countdown-note {
+
+        font-size: 9px;
+
+        line-height: 1.8;
+
+        margin-top: 40px;
+
+    }
+
+}
+
+
+.countdown {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    gap: 10px;
+
+    margin-top: 40px;
+
+}
+
+
+.countdown div {
+
+    padding: 18px 8px;
+
+    background:
+        rgba(0,0,0,0.35);
+
+    border:
+        1px solid rgba(255,255,255,0.12);
+
+}
+
+
+.countdown strong {
+
+    display: block;
+
+    font-family:
+        'Cormorant Garamond',
+        serif;
+
+    font-size: 38px;
+
+    font-weight: 400;
+
+}
+
+
+.countdown span {
+
+    font-size: 8px;
+
+    letter-spacing: 2px;
+
+    opacity: 0.6;
+
+}
+
+
+
+
+
+/* =========================================================
+   GALLERY — CINEMATIC EDITORIAL
+========================================================= */
+
+.gallery-slide {
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    padding: 65px 25px;
+
+    background: transparent;
+
+}
+
+.gallery-content {
+
+    width: min(100%, 720px);
+
+    margin-inline: auto;
+
+}
+
+
+/* HEADING */
+
+.gallery-content .eyebrow {
+
+    font-size: 9px;
+
+    letter-spacing: 5px;
+
+    opacity: 0.7;
+
+    margin-bottom: 15px;
+
+}
+
+.gallery-content h2 {
+
+    font-size: clamp(28px, 4vw, 42px);
+
+    font-weight: 400;
+
+    line-height: 1.25;
+
+    letter-spacing: 0.5px;
+
+    margin-bottom: 30px;
+
+}
+
+
+/* GALLERY WRAPPER */
+
+.gallery {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 15px;
+
+    width: 100%;
+
+}
+
+
+/* FOTO DASAR */
+
+.gallery-photo {
+
+    min-width: 0;
+
+    background-size: cover;
+
+    background-position: center;
+
+    background-repeat: no-repeat;
+
+    overflow: hidden;
+
+}
+
+
+/* BARIS 1 */
+
+.gallery-top {
+
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 15px;
+
+}
+
+.gallery-top .gallery-photo {
+
+    aspect-ratio: 4 / 5;
+
+}
+
+
+/* =========================================================
+   BARIS 2 — HORIZONTAL PHOTO SLIDER
+========================================================= */
+
+.gallery-middle {
+    width: 100%;
+    min-width: 0;
+}
+
+.gallery-slider {
+    width: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    -webkit-overflow-scrolling: touch;
+
+    cursor: grab;
+}
+
+.gallery-slider::-webkit-scrollbar {
+    display: none;
+}
+
+.gallery-slider:active {
+    cursor: grabbing;
+}
+
+.gallery-track {
+    display: flex;
+    align-items: stretch;
+
+    gap: 14px;
+
+    width: max-content;
+    min-width: 100%;
+}
+
+.gallery-track .gallery-photo {
+    flex: 0 0 260px;
+
+    width: 260px;
+    aspect-ratio: 5 / 3;
+
+    scroll-snap-align: start;
+}
+
+
+/* PETUNJUK SLIDER */
+
+.gallery-hint {
+
+    display: flex;
+
+    justify-content: flex-end;
+
+    align-items: center;
+
+    gap: 10px;
+
+    margin-top: 12px;
+
+    font-size: 8px;
+
+    letter-spacing: 2px;
+
+    opacity: 0.65;
+
+}
+
+.gallery-hint span {
+
+    font-size: 14px;
+
+    color: #B69A78;
+
+}
+
+
+/* BARIS 3 */
+
+.gallery-bottom .gallery-photo {
+
+    width: 100%;
+
+    aspect-ratio: 16 / 9;
+
+}
+
+
+/* FOTO PREWEDDING */
+
+.photo-1 {
+    background-image: url("assets/foto-slide1.jpg");
+}
+
+.photo-2 {
+    background-image: url("assets/foto-02.jpg");
+}
+
+.photo-3 {
+    background-image: url("assets/foto-03.jpg");
+}
+
+.photo-4 {
+    background-image: url("assets/foto-04.jpg");
+}
+
+.photo-5 {
+    background-image: url("assets/foto-05.jpg");
+}
+
+.photo-6 {
+    background-image: url("assets/foto-06.jpg");
+}
+
+.photo-7 {
+    background-image: url("assets/foto-07.jpg");
+}
+
+.photo-8 {
+    background-image: url("assets/foto-08.jpg");
+}
+
+.photo-9 {
+    background-image: url("assets/foto-09.jpg");
+}
+
+.photo-10 {
+    background-image: url("assets/foto-cover.jpg");
+}
+
+.photo-11 {
+    background-image: url("assets/foto-penutup.jpg");
+}
+
+.photo-12 {
+    background-image: url("assets/pria.jpg");
+}
+
+.photo-13 {
+    background-image: url("assets/wanita.jpg");
+}
+
+
+
+/* =========================================================
+   RESPONSIVE MOBILE
+========================================================= */
+
+@media (max-width: 600px) {
+
+    .gallery-slide {
+
+        padding: 45px 20px;
+
+    }
+
+    .gallery-content .eyebrow {
+
+        font-size: 8px;
+
+        letter-spacing: 3px;
+
+    }
+
+    .gallery-content h2 {
+
+        font-size: 27px;
+
+        margin-bottom: 22px;
+
+    }
+
+    .gallery {
+
+        gap: 10px;
+
+    }
+
+    .gallery-top {
+
+        gap: 10px;
+
+    }
+
+   .gallery-track {
+        gap: 10px;
+    }
+
+    .gallery-track .gallery-photo {
+        flex: 0 0 230px;
+
+        width: 230px;
+
+        aspect-ratio: 5 / 3;
+    }
+
+}
+
+
+
+
+
+
+/* =========================================================
+   RSVP — ELEGANT EDITORIAL
+========================================================= */
+
+.rsvp-slide {
+
+    position: relative;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 60px 25px;
+
+    background: transparent;
+
+}
+
+
+/* CONTENT */
+
+.rsvp-content {
+
+    position: relative;
+
+    z-index: 2;
+
+    width: min(100%, 650px);
+
+    padding: 0;
+
+    background: transparent;
+
+    border: none;
+
+    text-align: center;
+
+}
+
+
+/* EYEBROW */
+
+.rsvp-content .eyebrow {
+
+    font-size: 9px;
+
+    letter-spacing: 5px;
+
+    color: var(--accent-light);
+
+    opacity: 0.8;
+
+    margin-bottom: 25px;
+
+}
+
+
+/* HEADING */
+
+.rsvp-content h2 {
+
+    font-size: clamp(35px, 5vw, 55px);
+
+    font-weight: 400;
+
+    line-height: 1.2;
+
+    margin-bottom: 25px;
+
+}
+
+.rsvp-content h2 span {
+
+    display: block;
+
+    color: var(--accent);
+
+    font-style: italic;
+
+}
+
+
+/* DIVIDER */
+
+.rsvp-divider {
+
+    width: 50px;
+
+    height: 1px;
+
+    background: var(--accent);
+
+    margin: 0 auto 28px;
+
+}
+
+
+/* DESCRIPTION */
+
+.rsvp-description {
+
+    max-width: 420px;
+
+    margin: 0 auto;
+
+    font-size: 12px;
+
+    line-height: 2;
+
+    color: var(--text-secondary);
+
+    opacity: 0.85;
+
+}
+
+
+/* WHATSAPP BUTTON */
+
+.whatsapp-button {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 22px;
+
+    margin-top: 40px;
+
+    padding: 15px 22px;
+
+    color: var(--text-main);
+
+    text-decoration: none;
+
+    border: 1px solid var(--accent);
+
+    background: transparent;
+
+    font-size: 9px;
+
+    letter-spacing: 2px;
+
+    transition: 0.35s ease;
+
+}
+
+
+.whatsapp-button:hover {
+
+    background: var(--accent);
+
+    color: #101010;
+
+}
+
+
+.rsvp-arrow {
+
+    font-size: 15px;
+
+    transition: transform 0.3s ease;
+
+}
+
+
+.whatsapp-button:hover .rsvp-arrow {
+
+    transform: translate(3px, -3px);
+
+}
+
+
+/* NOTE */
+
+.rsvp-note {
+
+    margin-top: 45px;
+
+    font-family: 'Cormorant Garamond', serif;
+
+    font-size: 15px;
+
+    font-style: italic;
+
+    color: var(--text-muted);
+
+}
+
+
+/* =========================================================
+   RESPONSIVE MOBILE
+========================================================= */
+
+@media (max-width: 600px) {
+
+    .rsvp-slide {
+
+        padding: 40px 22px;
+
+    }
+
+    .rsvp-content .eyebrow {
+
+        font-size: 8px;
+
+        letter-spacing: 3px;
+
+        margin-bottom: 20px;
+
+    }
+
+    .rsvp-content h2 {
+
+        font-size: clamp(31px, 8vw, 40px);
+
+        margin-bottom: 22px;
+
+    }
+
+    .rsvp-description {
+
+        font-size: 11px;
+
+        line-height: 1.9;
+
+    }
+
+    .whatsapp-button {
+
+        gap: 15px;
+
+        margin-top: 32px;
+
+        padding: 14px 17px;
+
+        font-size: 8px;
+
+        letter-spacing: 1.5px;
+
+    }
+
+    .rsvp-note {
+
+        font-size: 13px;
+
+        margin-top: 35px;
+
+    }
+
+}
+
+
+
+
+/* =========================================================
+   CLOSING — CINEMATIC FINALE
+========================================================= */
+
+.closing-slide {
+
+    position: relative;
+    overflow: hidden;
+
+    background: transparent;
+
+}
+
+/* BACKGROUND PHOTO */
+
+.closing-slide::before {
+
+    content: "";
+
+    position: absolute;
+    inset: 0;
+
+    background-image:
+        url("assets/foto-penutup.jpg");
+
+    background-size: cover;
+    background-position: center;
+
+    transform: scale(1.03);
+
+    z-index: 0;
+
+}
+
+/* DARK CINEMATIC OVERLAY */
+
+.closing-slide::after {
+
+    content: "";
+
+    position: absolute;
+    inset: 0;
+
+    background:
+        linear-gradient(
+            to bottom,
+            rgba(0, 0, 0, 0.45),
+            rgba(0, 0, 0, 0.68) 50%,
+            rgba(0, 0, 0, 0.82)
+        );
+
+    z-index: 1;
+
+}
+
+/* CONTENT */
+
+.closing-content {
+
+    position: relative;
+    z-index: 2;
+
+    width: 100%;
+    max-width: 750px;
+
+    padding: 30px;
+
+    text-align: center;
+
+}
+
+/* EYEBROW */
+
+.closing-eyebrow {
+
+    font-size: 10px;
+    letter-spacing: 6px;
+
+    color: #D6C1A5;
+
+    margin-bottom: 25px;
+
+}
+
+/* DECORATIVE LINE */
+
+.closing-line {
+
+    width: 55px;
+    height: 1px;
+
+    background: #B69A78;
+
+    margin: 0 auto 35px;
+
+}
+
+/* NAMES */
+
+.closing-content h2 {
+
+    font-family: Bonheur Royale;
+
+    font-size: clamp(55px, 10vw, 105px);
+
+    font-weight: 400;
+
+    line-height: 1.05;
+
+    letter-spacing: 5px;
+
+    color: #F2EADF;
+
+    margin-bottom: 35px;
+
+}
+
+.closing-content h2 span {
+
+    display: block;
+
+    font-family: serif;
+
+    font-size: 0.48em;
+
+    font-style: italic;
+
+    font-weight: 300;
+
+    color: #D6C1A5;
+
+    margin: 8px 0;
+
+}
+
+/* MESSAGE */
+
+.closing-message {
+
+    max-width: 420px;
+
+    margin: 0 auto 35px;
+
+    font-size: 13px;
+
+    line-height: 2;
+
+    letter-spacing: 0.5px;
+
+    color: #F2EADF;
+
+    opacity: 0.85;
+
+}
+
+/* THANKS */
+
+.closing-thanks {
+
+    font-size: 9px;
+
+    letter-spacing: 4px;
+
+    color: #D6C1A5;
+
+    margin-bottom: 20px;
+
+}
+
+/* DATE */
+
+.closing-date {
+
+    font-size: 11px;
+
+    letter-spacing: 5px;
+
+    color: #F2EADF;
+
+    opacity: 0.85;
+
+}
+
+
+/* MOBILE */
+
+@media (max-width: 600px) {
+
+    .closing-content {
+
+        padding: 25px;
+
+    }
+
+    .closing-eyebrow {
+
+        font-size: 9px;
+        letter-spacing: 4px;
+
+    }
+
+    .closing-content h2 {
+
+        font-size: clamp(48px, 13vw, 75px);
+
+        letter-spacing: 3px;
+
+    }
+
+    .closing-message {
+
+        font-size: 11px;
+
+        max-width: 300px;
+
+    }
+
+    .closing-date {
+
+        font-size: 10px;
+
+        letter-spacing: 4px;
+
+    }
+
+}
+
+
+/* =========================================================
+   CINEMATIC ELEGANCE — SCROLL REVEAL
+========================================================= */
+
+/* KONDISI AWAL KONTEN */
+
+.reveal {
+    opacity: 0;
+    transform: translateY(24px);
+
+    transition:
+        opacity 1s cubic-bezier(0.22, 1, 0.36, 1),
+        transform 1s cubic-bezier(0.22, 1, 0.36, 1);
+
+    will-change: opacity, transform;
+}
+
+/* KETIKA KONTEN MUNCUL */
+
+.reveal.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ANIMASI BERTAHAP PADA ELEMEN UTAMA */
+
+.reveal > * {
+    opacity: 0;
+    transform: translateY(18px);
+
+    transition:
+        opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1),
+        transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.reveal.is-visible > * {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* JEDA KEMUNCULAN */
+
+.reveal.is-visible > *:nth-child(1) {
+    transition-delay: 0.10s;
+}
+
+.reveal.is-visible > *:nth-child(2) {
+    transition-delay: 0.25s;
+}
+
+.reveal.is-visible > *:nth-child(3) {
+    transition-delay: 0.40s;
+}
+
+.reveal.is-visible > *:nth-child(4) {
+    transition-delay: 0.55s;
+}
+
+.reveal.is-visible > *:nth-child(5) {
+    transition-delay: 0.70s;
+}
+
+/* =========================================================
+   CINEMATIC PHOTO REVEAL
+========================================================= */
+
+/* FOTO MEMPELAI */
+
+.couple-content .portrait {
+    clip-path: inset(0 0 100% 0);
+    opacity: 0;
+
+    transition:
+        clip-path 1.2s cubic-bezier(0.22, 1, 0.36, 1),
+        opacity 0.9s ease;
+
+    transition-delay: 0.15s;
+}
+
+.couple-content.is-visible .portrait {
+    clip-path: inset(0 0 0 0);
+    opacity: 1;
+}
+
+/* FOTO GALERI */
+
+.gallery-photo {
+    transition:
+        clip-path 1s cubic-bezier(0.22, 1, 0.36, 1),
+        opacity 0.9s ease;
+}
+
+.gallery-content:not(.is-visible) .gallery-photo {
+    clip-path: inset(0 0 100% 0);
+    opacity: 0;
+}
+
+.gallery-content.is-visible .gallery-photo {
+    clip-path: inset(0 0 0 0);
+    opacity: 1;
+}
+
+/* JEDA FOTO GALERI */
+
+.gallery-content.is-visible .gallery-top .gallery-photo:nth-child(2) {
+    transition-delay: 0.2s;
+}
+
+.gallery-content.is-visible .gallery-bottom .gallery-photo {
+    transition-delay: 0.4s;
+}
+
+/* =========================================================
+   COUNTDOWN ANIMATION
+========================================================= */
+
+.countdown-item strong {
+    transition:
+        opacity 0.8s ease,
+        transform 0.8s ease;
+}
+
+.countdown-item {
+    opacity: 0;
+    transform: translateY(15px);
+
+    transition:
+        opacity 0.8s ease,
+        transform 0.8s ease;
+}
+
+.countdown-content.is-visible .countdown-item {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.countdown-content.is-visible .countdown-item:nth-child(1) {
+    transition-delay: 0.2s;
+}
+
+.countdown-content.is-visible .countdown-item:nth-child(2) {
+    transition-delay: 0.35s;
+}
+
+.countdown-content.is-visible .countdown-item:nth-child(3) {
+    transition-delay: 0.5s;
+}
+
+.countdown-content.is-visible .countdown-item:nth-child(4) {
+    transition-delay: 0.65s;
+}
+
+/* =========================================================
+   REDUCED MOTION — AKSESIBILITAS
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+    .reveal,
+    .reveal > *,
+    .couple-content .portrait,
+    .gallery-photo,
+    .countdown-item {
+        transition: none !important;
+        transform: none !important;
+        clip-path: none !important;
+    }
+
+    .reveal,
+    .reveal > *,
+    .couple-content .portrait,
+    .gallery-photo,
+    .countdown-item {
+        opacity: 1 !important;
+    }
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 600px) {
+
+    h1 {
+
+        font-size: 3.3rem;
+
+    }
+
+
+    h2 {
+
+        font-size: 2.6rem;
+
+    }
+
+
+    .portrait {
+
+        width: 180px;
+
+        height: 250px;
+
+    }
+
+
+    .countdown strong {
+
+        font-size: 30px;
+
+    }
+
+
+    .gallery-photo {
+
+        min-height: 150px;
+
+    }
+
+}
+
+
+/* =========================================================
+   DESKTOP
+========================================================= */
+
+@media (min-width: 900px) {
+
+    .slide {
+
+        padding-left: 80px;
+
+        padding-right: 80px;
+
+    }
+
+}
+
+
+
+/* =========================================================
+   WELCOME SCREEN — DARK CINEMATIC
+========================================================= */
+
+.welcome-screen {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    min-height: 100vh;
+    min-height: 100dvh;
+
+    padding: 24px;
+
+    color: var(--text-main);
+    text-align: center;
+
+    background-image:
+        linear-gradient(
+            rgba(0, 0, 0, 0.40),
+            rgba(0, 0, 0, 0.72)
+        ),
+        url("assets/foto-cover.jpg");
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    transition:
+        opacity 0.8s ease,
+        visibility 0.8s ease;
+}
+
+
+/* OVERLAY */
+
+.welcome-overlay {
+    position: absolute;
+    inset: 0;
+
+    background:
+        radial-gradient(
+            circle,
+            transparent 10%,
+            rgba(0, 0, 0, 0.30) 100%
+        );
+
+    pointer-events: none;
+}
+
+
+/* CONTENT */
+
+.welcome-content {
+    position: relative;
+    z-index: 1;
+
+    width: 100%;
+    max-width: 900px;
+
+    min-height: min(680px, 85dvh);
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    justify-content: flex-start;
+}
+
+
+/* LABEL */
+
+.welcome-label {
+    margin: 0 0 18px;
+
+    font-family: 'Montserrat', sans-serif;
+
+    font-size: 10px;
+    font-weight: 400;
+
+    letter-spacing: 5px;
+
+    color: var(--text-secondary);
+}
+
+
+/* NAMA MEMPELAI */
+
+.welcome-names {
+    margin: 0;
+
+    font-family: 'Bonheur Royale', serif;
+
+    font-size: clamp(48px, 10vw, 88px);
+    font-weight: 400;
+
+    line-height: 1;
+
+    letter-spacing: 1px;
+
+    color: var(--text-main);
+
+    white-space: nowrap;
+}
+
+.welcome-names span {
+    font-family: 'Cormorant Garamond', serif;
+
+    display: inline;
+
+    margin: 0 8px;
+
+    font-style: italic;
+
+    color: var(--accent);
+}
+
+
+/* GREETING */
+
+.welcome-greeting {
+    margin-top: auto;
+    margin-bottom: 0px;
+
+    font-family: 'Montserrat', sans-serif;
+
+    font-size: 11px;
+    font-weight: 400;
+
+    letter-spacing: 1.5px;
+
+    color: var(--text-secondary);
+}
+
+/* NAMA PENERIMA UNDANGAN */
+
+.welcome-message {
+    max-width: 90%;
+    margin: 8px 0 20px;
+
+    font-family: 'Cormorant Garamond', serif;
+
+    font-size: clamp(24px, 5vw, 34px);
+    font-weight: 500;
+
+    line-height: 1.2;
+    letter-spacing: 1px;
+
+    color: var(--accent-light);
+
+    overflow-wrap: anywhere;
+    text-align: center;
+}
+
+/* BUTTON */
+
+.welcome-button {
+    margin-bottom: 0;
+
+    padding: 14px 14px;
+
+    color: #F8F2ED;
+
+    background: #702D3A;
+
+    border: 1px solid rgba(214, 193, 165, 0.35);
+
+    border-radius: 2px;
+
+    font-family: 'Bonheur Royale', sans-serif;
+
+    font-size: 20px;
+    font-weight: 500;
+
+    letter-spacing: 3px;
+
+    cursor: pointer;
+
+    transition: all 0.35s ease;
+}
+
+.welcome-button:hover {
+    background: #873B4B;
+
+    border-color: var(--accent-light);
+
+    transform: translateY(-2px);
+}
+
+
+/* FOOTER */
+
+.welcome-footer {
+    margin-top: 10px;
+
+    font-family: 'Montserrat', sans-serif;
+
+    font-size: 9px;
+    font-weight: 300;
+
+    letter-spacing: 1.5px;
+
+    color: var(--text-muted);
+
+    opacity: 0.9;
+}
+
+
+/* MOBILE */
+
+@media (max-width: 480px) {
+
+    .welcome-content {
+        min-height: min(620px, 85dvh);
+    }
+
+    .welcome-label {
+        font-size: 9px;
+        letter-spacing: 4px;
+    }
+
+    .welcome-names {
+        font-size: clamp(39px, 11vw, 54px);
+        letter-spacing: 0;
+    }
+
+    .welcome-names span {
+        margin: 0 3px;
+    }
+
+    .welcome-greeting {
+        font-size: 10px;
+    }
+
+    .welcome-message {
+        max-width: 90%;
+        font-size: clamp(22px, 7vw, 28px);
+        margin-bottom: 18px;
+    }
+
+    .welcome-button {
+        padding: 13px 13px;
+        font-size: 20px;
+    }
+
+    .welcome-footer {
+        font-size: 8px;
+    }
+
+}
+
+
+/* ANIMASI SAAT UNDANGAN DIBUKA */
+
+.welcome-screen.is-hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+@media (max-width: 480px) {
+   
+    .welcome-label {
+        letter-spacing: 3px;
+    }
+ 
+}
+
+
+
+/* =========================================================
+   FINAL OVERRIDE — SLIDE 2 BURGUNDY FRAME
+========================================================= */
+
+.dark-slide.quote-slide {
+    background: transparent;
+
+    padding: 35px 22px;
+}
+
+/* Panel burgundy */
+.quote-slide .quote-box {
+    position: relative;
+
+    width: 100%;
+    max-width: 750px;
+    min-height: 75svh;
+
+    padding: 55px 30px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    background: linear-gradient(
+        145deg,
+        #431926,
+        #230F17
+    );
+
+    border: 1px solid rgba(214, 193, 165, 0.18);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
+}
+
+/* Label */
+.quote-slide .quote-eyebrow {
+    margin-bottom: 28px;
+}
+
+/* Terjemahan */
+.quote-slide .quote {
+    max-width: 520px;
+    font-size: clamp(14px, 2vw, 17px);
+    line-height: 1.9;
+    color: var(--text-secondary);
+}
+
+/* Referensi */
+.quote-slide .quote-source {
+    font-size: 10px;
+    letter-spacing: 3px;
+    opacity: 1;
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+    .dark-slide.quote-slide {
+        padding: 25px 18px;
+    }
+
+    .quote-slide .quote-box {
+        min-height: 75svh;
+        padding: 40px 22px;
+    }
+}
+
+/* Menghilangkan background countdown */
+
+.countdown-item {
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    backdrop-filter: none !important;
+}
+
+
+/* =========================================================
+   GALLERY LIGHTBOX
+========================================================= */
+
+.gallery-lightbox {
+
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 9999;
+
+    display: none;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 40px 70px;
+
+    background: transparent;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+
+}
+
+.gallery-lightbox.is-open {
+
+    display: flex;
+
+}
+
+
+/* FOTO UTAMA */
+
+.lightbox-image-wrapper {
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    max-width: 100%;
+
+    max-height: 100%;
+
+}
+
+.lightbox-image-wrapper img {
+
+    display: block;
+
+    max-width: 100%;
+
+    max-height: 82vh;
+
+    width: auto;
+
+    height: auto;
+
+    object-fit: contain;
+
+    box-shadow: 0 15px 60px rgba(0,0,0,0.5);
+
+}
+
+
+/* NOMOR FOTO */
+
+.lightbox-counter {
+
+    margin-top: 18px;
+
+    font-size: 9px;
+
+    letter-spacing: 3px;
+
+    color: #B69A78;
+
+}
+
+
+/* TOMBOL CLOSE */
+
+.lightbox-close {
+
+    position: absolute;
+
+    top: 25px;
+
+    right: 35px;
+
+    background: transparent;
+
+    border: none;
+
+    color: #F2EADF;
+
+    font-size: 38px;
+
+    font-weight: 200;
+
+    cursor: pointer;
+
+    opacity: 0.8;
+
+    transition: 0.3s;
+
+}
+
+.lightbox-close:hover {
+
+    opacity: 1;
+
+    transform: rotate(90deg);
+
+}
+
+
+/* TOMBOL NAVIGASI */
+
+.lightbox-arrow {
+
+    position: absolute;
+
+    top: 50%;
+
+    transform: translateY(-50%);
+
+    background: transparent;
+
+    border: none;
+
+    color: #F2EADF;
+
+    font-size: 25px;
+
+    padding: 15px;
+
+    cursor: pointer;
+
+    opacity: 0.65;
+
+    transition: 0.3s;
+
+}
+
+.lightbox-arrow:hover {
+
+    opacity: 1;
+
+    color: #B69A78;
+
+}
+
+.lightbox-prev {
+
+    left: 25px;
+
+}
+
+.lightbox-next {
+
+    right: 25px;
+
+}
+
+
+/* RESPONSIVE MOBILE */
+
+@media (max-width: 600px) {
+
+    .gallery-lightbox {
+
+        padding: 50px 35px;
+
+    }
+
+    .lightbox-image-wrapper img {
+
+        max-width: 100%;
+
+        max-height: 75vh;
+
+    }
+
+    .lightbox-close {
+
+        top: 12px;
+
+        right: 18px;
+
+        font-size: 32px;
+
+    }
+
+    .lightbox-arrow {
+
+        font-size: 18px;
+
+        padding: 8px;
+
+    }
+
+    .lightbox-prev {
+
+        left: 3px;
+
+    }
+
+    .lightbox-next {
+
+        right: 3px;
+
+    }
+
+}
+
+
+/* =========================================================
+   HOME ICON — MUSIC INDICATOR
+========================================================= */
+
+.nav-icon[href="#slide-1"] {
+    position: relative;
+}
+
+/* TANDA MUSIK SAAT SEDANG DIPUTAR */
+
+.nav-icon[href="#slide-1"].music-playing::after {
+    content: "♪";
+
+    position: absolute;
+
+    top: -7px;
+    right: -7px;
+
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 13px;
+    font-weight: bold;
+
+    color: var(--accent-light);
+
+    animation: musicNote 1.2s ease-in-out infinite;
+}
+
+/* ANIMASI KECIL */
+
+@keyframes musicNote {
+
+    0%, 100% {
+        transform: translateY(0);
+        opacity: 0.65;
+    }
+
+    50% {
+        transform: translateY(-3px);
+        opacity: 1;
+    }
+
+}
+
+/* =========================================================
+   FIX DATE COLOR ON IPHONE / SAFARI
+========================================================= */
+
+.closing-date,
+.closing-date a,
+.closing-date a[x-apple-data-detectors] {
+    color: inherit !important;
+    -webkit-text-fill-color: currentColor !important;
+    text-decoration: none !important;
+}
+
+/* =========================================================
+   LIGHTBOX — SWIPE GALLERY
+========================================================= */
+
+.lightbox-image-wrapper {
+    touch-action: pan-y;
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+#lightboxImage {
+    touch-action: pan-y;
+    user-select: none;
+    -webkit-user-select: none;
+    -webkit-user-drag: none;
+    cursor: grab;
+}
+
+/* =========================================================
+   RSVP CONTACT MODAL
+========================================================= */
+
+.rsvp-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 10000;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 22px;
+
+    background: transparent;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+
+    opacity: 0;
+    visibility: hidden;
+
+    transition: opacity 0.35s ease,
+                visibility 0.35s ease;
+}
+
+.rsvp-modal.is-open {
+    opacity: 1;
+    visibility: visible;
+}
+
+.rsvp-modal-content {
+    position: relative;
+
+    width: min(100%, 390px);
+
+    padding: 42px 30px 35px;
+
+    background: #181615;
+    border: 1px solid rgba(182, 154, 120, 0.45);
+
+    text-align: center;
+
+    transform: translateY(20px);
+    transition: transform 0.35s ease;
+}
+
+.rsvp-modal.is-open .rsvp-modal-content {
+    transform: translateY(0);
+}
+
+.rsvp-modal-close {
+    position: absolute;
+    top: 12px;
+    right: 17px;
+
+    border: none;
+    background: transparent;
+
+    color: var(--accent-light);
+
+    font-size: 27px;
+    font-weight: 300;
+
+    cursor: pointer;
+}
+
+.rsvp-modal-eyebrow {
+    margin-bottom: 13px;
+
+    color: var(--burgundy-light);
+
+    font-size: 8px;
+    letter-spacing: 4px;
+}
+
+.rsvp-modal-content h3 {
+    margin-bottom: 12px;
+
+    color: var(--text-main);
+
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 30px;
+    font-weight: 400;
+}
+
+.rsvp-modal-description {
+    max-width: 270px;
+
+    margin: 0 auto 28px;
+
+    color: var(--text-secondary);
+
+    font-size: 11px;
+    line-height: 1.9;
+}
+
+.rsvp-contact-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.rsvp-contact {
+    position: relative;
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    padding: 17px 45px 17px 18px;
+
+    border: 1px solid rgba(182, 154, 120, 0.35);
+
+    color: var(--text-main);
+    text-decoration: none;
+
+    text-align: left;
+
+    transition: 0.3s ease;
+}
+
+.rsvp-contact:hover {
+    background: rgba(137, 80, 93, 0.13);
+    border-color: var(--burgundy-light);
+}
+
+.rsvp-contact-name {
+    font-size: 11px;
+    letter-spacing: 3px;
+}
+
+.rsvp-contact-role {
+    margin-top: 5px;
+
+    color: var(--text-secondary);
+
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 14px;
+    font-style: italic;
+}
+
+.rsvp-contact-arrow {
+    position: absolute;
+    right: 18px;
+    top: 50%;
+
+    color: var(--accent);
+
+    font-size: 17px;
+
+    transform: translateY(-50%);
+}
+
+@media (max-width: 600px) {
+
+    .rsvp-modal-content {
+        padding: 40px 23px 28px;
+    }
+
+}
+
+/* =========================================================
+   LOCATION MODAL — MINI MAP
+========================================================= */
+
+.maps-modal {
+
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 10001;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 22px;
+
+    background: rgba(0, 0, 0, 0.25);
+
+    backdrop-filter: blur(5px);
+
+    -webkit-backdrop-filter: blur(5px);
+
+    opacity: 0;
+
+    visibility: hidden;
+
+    transition: 0.35s ease;
+
+}
+
+
+/* PANEL TERBUKA */
+
+.maps-modal.is-open {
+
+    opacity: 1;
+
+    visibility: visible;
+
+}
+
+
+/* KONTEN PANEL */
+
+.maps-modal-content {
+
+    position: relative;
+
+    width: min(100%, 430px);
+
+    padding: 40px 25px 30px;
+
+    background: rgba(24, 22, 21, 0.75);
+
+    border: 1px solid rgba(182, 154, 120, 0.4);
+
+    text-align: center;
+
+    transform: translateY(20px);
+
+    transition: transform 0.35s ease;
+
+    max-height: calc(100dvh - 44px);
+
+    overflow-y: auto;
+
+    overscroll-behavior: contain;
+}
+
+
+.maps-modal.is-open .maps-modal-content {
+
+    transform: translateY(0);
+
+}
+
+
+/* TOMBOL TUTUP */
+
+.maps-modal-close {
+
+    position: absolute;
+
+    top: 10px;
+
+    right: 17px;
+
+    border: none;
+
+    background: transparent;
+
+    color: var(--accent-light);
+
+    font-size: 27px;
+
+    font-weight: 300;
+
+    cursor: pointer;
+
+}
+
+
+/* JUDUL PANEL */
+
+.maps-modal-eyebrow {
+
+    margin-bottom: 12px;
+
+    color: var(--burgundy-light);
+
+    font-size: 8px;
+
+    letter-spacing: 4px;
+
+}
+
+
+.maps-modal-content h3 {
+
+    margin-bottom: 10px;
+
+    color: var(--text-main);
+
+    font-family: 'Cormorant Garamond', serif;
+
+    font-size: 30px;
+
+    font-weight: 400;
+
+}
+
+
+.maps-modal-description {
+
+    margin-bottom: 23px;
+
+    color: var(--text-secondary);
+
+    font-size: 10px;
+
+    line-height: 1.8;
+
+}
+
+
+/* MINI MAP */
+
+.mini-map {
+
+    width: 100%;
+
+    overflow: hidden;
+
+    border: 1px solid rgba(182, 154, 120, 0.3);
+
+}
+
+
+.mini-map iframe {
+
+    display: block;
+
+    width: 100%;
+
+    height: 250px;
+
+}
+
+
+/* LINK GOOGLE MAPS */
+
+.maps-modal-link {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 15px;
+
+    margin-top: 22px;
+
+    padding: 14px 0;
+
+    border-bottom: 1px solid rgba(255,255,255,0.4);
+
+    color: var(--text-main);
+
+    text-decoration: none;
+
+    font-size: 9px;
+
+    letter-spacing: 2.5px;
+
+    transition: 0.3s ease;
+
+}
+
+
+.maps-modal-link:hover {
+
+    color: var(--burgundy-light);
+
+}
+
+
+.maps-modal-link span {
+
+    font-size: 14px;
+
+}
+
+
+/* RESPONSIVE */
+
+@media (max-width: 600px) {
+
+    .maps-modal-content {
+
+        padding: 38px 20px 25px;
+
+    }
+
+    .mini-map iframe {
+
+        height: 220px;
+
+    }
+
+}
+
+
+/* =========================================================
+   FLOATING NAVIGATION — ICON MENU
+========================================================= */
+
+.floating-navigation {
+    position: fixed;
+    bottom: 25px;
+    left: 50%;
+    transform: translateX(-50%);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+
+    padding: 10px 14px;
+
+    /* Burgundy sebagai warna utama */
+    background: rgba(59, 32, 40, 0.94);
+    border: 1px solid rgba(214, 193, 165, 0.28);
+    border-radius: 50px;
+
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.35);
+
+    z-index: 999;
+}
+
+/* SETIAP ICON */
+
+.floating-navigation .nav-icon {
+    position: relative;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    flex: 0 0 38px;
+
+    width: 38px;
+    height: 38px;
+
+    padding: 0;
+
+    color: var(--text-secondary);
+    text-decoration: none;
+
+    border-radius: 50%;
+
+    transition: all 0.3s ease;
+}
+
+/* UKURAN SVG */
+
+.floating-navigation .nav-icon svg {
+    display: block;
+
+    width: 19px;
+    height: 19px;
+
+    min-width: 19px;
+    min-height: 19px;
+
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.5;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+
+    overflow: visible;
+}
+
+/* ICON AKTIF */
+
+.floating-navigation .nav-icon.is-active {
+    color: var(--accent-light);
+    background: rgba(137, 80, 93, 0.25);
+}
+
+/* HOVER */
+
+.floating-navigation .nav-icon:hover,
+.floating-navigation .nav-icon.active {
+    color: var(--accent-light);
+    background: rgba(214, 193, 165, 0.15);
+}
+
+/* MOBILE */
+
+@media (max-width: 600px) {
+
+    .floating-navigation {
+        bottom: 18px;
+        gap: 7px;
+        padding: 8px 11px;
+    }
+
+    .floating-navigation .nav-icon {
+        flex: 0 0 34px;
+        width: 34px;
+        height: 34px;
+    }
+
+    .floating-navigation .nav-icon svg {
+        width: 17px;
+        height: 17px;
+        min-width: 17px;
+        min-height: 17px;
+    }
+
+}
+
+
+/* =========================================================
+   MUSIC BUTTON — FLOATING NAVIGATION
+========================================================= */
+
+.floating-navigation .music-nav-button {
+
+    appearance: none;
+    -webkit-appearance: none;
+
+    border: none;
+    background: transparent;
+
+    font-family: inherit;
+
+    cursor: pointer;
+
+    color: var(--text-secondary);
+
+}
+
+/* ICON MUSIK AKTIF */
+
+.floating-navigation .music-nav-button.is-playing {
+
+    color: var(--accent-light);
+
+    background: rgba(137, 80, 93, 0.25);
+
+}
+
+/* HOVER */
+
+.floating-navigation .music-nav-button:hover {
+
+    color: var(--accent-light);
+
+    background: rgba(137, 80, 93, 0.20);
+
+}
+
+/* ANIMASI MUSIK */
+
+.floating-navigation .music-nav-button.is-playing svg {
+
+    animation: musicPulse 2s ease-in-out infinite;
+
+}
+
+@keyframes musicPulse {
+
+    0%, 100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.12);
+    }
+
+}
+
+
